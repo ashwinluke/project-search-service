@@ -3,10 +3,7 @@ package com.marketlogic.app.projectrecord.controller;
 import com.marketlogic.app.projectrecord.dto.ProjectRecordDTO;
 import com.marketlogic.app.projectrecord.entity.ProjectRecord;
 import com.marketlogic.app.projectrecord.service.ProjectRecordService;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,6 +17,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/project-record")
 @RequiredArgsConstructor
+@Api(value = "Endpoints are used to create/update/delete the project records")
 public class ProjectRecordController {
 
     @Autowired
