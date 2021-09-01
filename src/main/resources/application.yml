@@ -32,7 +32,6 @@ kafka:
     max:
       records: 100
 ---
-
 spring:
   profiles: test
 logging:
@@ -43,10 +42,19 @@ logging:
           parameters:
             AbstractSerializableParameter: error
 ---
-
 spring:
   profiles: dev
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
 log4j:
   logger:
     org.springframework: DEBUG
     com.saurer: DEBUG
+logging:
+  level:
+    org:
+      hibernate:
+        type: DEBUG
