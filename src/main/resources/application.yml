@@ -35,7 +35,13 @@ kafka:
 
 spring:
   profiles: test
-
+logging:
+  level:
+    io:
+      swagger:
+        models:
+          parameters:
+            AbstractSerializableParameter: error
 ---
 
 spring:
