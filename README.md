@@ -1,6 +1,6 @@
 # project-search-service
 
-The project-search-service service is used to create/update/search/delete and publish the project.
+The project-search-service service is used to create/update/search/delete the projectRecord on ElasticSearch.
 
 # Prerequisties
 kakfa should up and run on 9092
