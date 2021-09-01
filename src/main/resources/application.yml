@@ -1,0 +1,46 @@
+app:
+  version: 1.0.0
+spring:
+  application:
+    name: projectsearchservice
+  elasticsearch:
+    rest:
+      uris: localhost:9206
+      connection-timeout: 1s
+      read-timeout: 1m
+server:
+  port: 4203
+  compression:
+    enabled: true
+    min-response-size: 4096
+    mime-types: application/json
+kafka:
+  bootstrap:
+    servers: localhost:9092
+  auto:
+    offset:
+      reset: latest
+    commit:
+      interval:
+        ms: 1000
+  enable:
+    auto:
+      commit: false
+  topics:
+    PublishProject: PublishProject
+  batch:
+    max:
+      records: 100
+---
+
+spring:
+  profiles: test
+
+---
+
+spring:
+  profiles: dev
+log4j:
+  logger:
+    org.springframework: DEBUG
+    com.saurer: DEBUG
