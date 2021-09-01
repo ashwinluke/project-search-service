@@ -110,7 +110,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.marketlogic.app.ProjectServiceApplication</mainClass>
+                            <mainClass>com.marketlogic.app.ProjectSearchServiceApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -121,7 +121,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <fork>true</fork>
-                    <mainClass>com.marketlogic.app.ProjectServiceApplication</mainClass>
+                    <mainClass>com.marketlogic.app.ProjectSearchServiceApplication</mainClass>
                     <finalName>app</finalName>
                 </configuration>
                 <executions>
