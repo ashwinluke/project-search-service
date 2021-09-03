@@ -19,10 +19,9 @@ import java.util.Optional;
 public class ProjectRecordServiceImpl implements ProjectRecordService {
 
     @Autowired
-    private ModelMapper modelMapper;
-
-    @Autowired
     private final ProjectRecordRepository projectRecordRepository;
+    @Autowired
+    private ModelMapper modelMapper;
 
     public ProjectRecord createProjectRecord(ProjectRecordDTO projectRecordDTO) {
         var projectRecord = modelMapper.map(projectRecordDTO, ProjectRecord.class);

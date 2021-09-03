@@ -22,13 +22,11 @@ import java.util.List;
 @Profile("!mock")
 public class ProjectRecordConsumer {
 
+    private final ObjectMapper objectMapper = new ObjectMapper();
     @Autowired
     private ProjectRecordService projectRecordService;
-
     @Autowired
     private ModelMapper modelMapper;
-
-    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @KafkaListener(
             id = "${spring.application.name}-${kafka.topics.PublishProject}",
