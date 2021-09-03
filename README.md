@@ -5,6 +5,7 @@ It will consume the data from kafka topic and inserts into Elasticsearch
 
 # Prerequisites
 Kakfa should up and run on 9092
+
 ElasticSearch should up and run on 9206
 
 Please use the ENV variable to change the above configurations. Please use spring profiles to use ENV specific configurations
