@@ -5,7 +5,7 @@ spring:
     name: projectsearchservice
   elasticsearch:
     rest:
-      uris: localhost:9206
+      uris: elasticsearch:9206
       connection-timeout: 1s
       read-timeout: 1m
 server:
@@ -16,7 +16,7 @@ server:
     mime-types: application/json
 kafka:
   bootstrap:
-    servers: localhost:9092
+    servers: kafka:9092
   auto:
     offset:
       reset: latest
@@ -44,11 +44,17 @@ logging:
 ---
 spring:
   profiles: dev
+  elasticsearch:
+    rest:
+      uris: localhost:9206
   jpa:
     show-sql: true
     properties:
       hibernate:
         format_sql: true
+kafka:
+  bootstrap:
+    servers: localhost:9092
 log4j:
   logger:
     org.springframework: DEBUG

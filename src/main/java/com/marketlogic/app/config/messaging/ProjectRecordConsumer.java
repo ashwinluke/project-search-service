@@ -42,18 +42,18 @@ public class ProjectRecordConsumer {
             Acknowledgment acknowledgment
     ) {
         try {
-            log.debug("Beginning to consume {} Publish Project messages", messages.size());
+            log.info("Beginning to consume {} Publish Project messages", messages.size());
             messages.forEach(msg -> {
                 log.info("Message: {}", msg);
                 try {
                     projectRecordService.createProjectRecord(objectMapper.readValue(msg, ProjectRecordDTO.class));
-                    log.info("Added to the indices");
+                    log.info("Added ProjectRecord to the indices");
                 } catch (JsonProcessingException e) {
                     log.error("Error occurred while converting it to ProjectRecordDTO! ", e);
                 }
             });
             acknowledgment.acknowledge();
-            log.debug("{} Publish Project data messages consumed", messages.size());
+            log.info("{} Publish Project data messages consumed", messages.size());
         } catch (Exception e) {
             log.error("Error occurred while streaming publish project data! ", e);
         }
