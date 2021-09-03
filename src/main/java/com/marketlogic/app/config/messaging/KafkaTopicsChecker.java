@@ -2,13 +2,16 @@ package com.marketlogic.app.config.messaging;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.admin.AdminClient;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
@@ -16,6 +19,9 @@ import java.util.stream.Collectors;
 @Component
 @Slf4j
 public class KafkaTopicsChecker {
+
+    @Value("${kafka.bootstrap.servers}")
+    private String kafkaBootstrapServers;
 
     @Autowired
     private KafkaAdmin kafkaAdmin;
@@ -25,7 +31,7 @@ public class KafkaTopicsChecker {
 
     @EventListener
     public void checkTopics(ContextRefreshedEvent contextRefreshedEvent) throws ExecutionException, InterruptedException {
-        try (var client = AdminClient.create(kafkaAdmin.getConfig())) {
+        try (var client = AdminClient.create(Map.of(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaBootstrapServers))) {
             var listTopicsResult = client.listTopics();
             var existingTopics = listTopicsResult.names().get();
             var missingTopics = kafkaTopics
